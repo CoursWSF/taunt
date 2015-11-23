@@ -18,4 +18,12 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
         ));
     }
+
+    /**
+     * @Route("/login", name="loginAdministration")
+     */
+    public function loginAction(Request $request)
+    {
+        return $this->render('default/login.html.twig');
+    }
 }
