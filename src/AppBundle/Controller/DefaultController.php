@@ -64,4 +64,9 @@ class DefaultController extends Controller
       ));
     }
 
+    public function showNavBarAction(Request $request)
+    {
+      return $this->render('default/_navbar.html.twig');
+    }
+
 }
