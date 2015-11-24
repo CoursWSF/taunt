@@ -6,6 +6,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+use AppBundle\Entity\Sound;
+
+
 class DefaultController extends Controller
 {
     /**
@@ -26,4 +29,37 @@ class DefaultController extends Controller
     {
         return $this->render('default/login.html.twig');
     }
+
+    /**
+     * @Route("/upload", name="uploadMp3")
+     */
+    public function uploadAction(Request $request)
+    {
+
+      $sound = new Sound();
+      $form = $this->createFormBuilder($sound)
+          ->add('name')
+          ->add('file')
+          ->add('submit', 'submit')
+          ->getForm();
+
+      $form->handleRequest($request);
+
+      if ($form->isValid()) {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $sound->upload();
+
+        $em->persist($sound);
+        $em->flush();
+
+        return $this->redirectToRoute('homepage');
+      }
+
+      return $this->render('default/upload.html.twig', array(
+        'form' => $form->createView()
+      ));
+    }
+
 }
