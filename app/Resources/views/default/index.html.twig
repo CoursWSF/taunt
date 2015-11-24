@@ -1,25 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<script>
+function play(id){
+     var audio = document.getElementById('audio'+ id );
+     audio.play();
+  }
 
-<div class="container-fluid" style="margin-top:3%;">
-  <div class="row">
-    <div class="col-sm-4"></div>
+function display(name) {
+  console.log(name);
+  document.getElementById('informations').innerHTML = '<div class="focus"><h1>'+ name +'</h1> </div>';
+  // document.write('<div class="focus"><h1>'+ name +'</h1> </div>');
+}
+ </script>
 
-    <div class="col-sm-4">
-      {% for sound in sounds %}
-          <p>{{sound.name}}</p>
-          <audio controls>
-            <source src="uploads/sounds/{{sound.path}}" type="audio/mpeg">
-          </audio>
+ <div id="informations">
 
-      {% endfor %}
-    </div>
+ </div>
 
-    <div class="col-sm-4"></div>
-  </div>
-
-</div>
+  {% for sound in sounds %}
+      <input type="button" value="{{sound.name}}"  onclick="play('{{sound.id}}'); display('{{sound.name}}')">
+      <audio id="{{'audio' ~ sound.id}}" src="uploads/sounds/{{sound.path}}" ></audio>
+  {% endfor %}
 
 
 
