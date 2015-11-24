@@ -16,9 +16,11 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+        $sounds = $this->getDoctrine()->getRepository("AppBundle:Sound")->findAll();
+
         return $this->render('default/index.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+            'sounds' => $sounds
         ));
     }
 
