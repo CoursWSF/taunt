@@ -5,8 +5,8 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
 use AppBundle\Entity\Sound;
+use AppBundle\Entity\Tag;
 
 
 class DefaultController extends Controller
@@ -60,6 +60,36 @@ class DefaultController extends Controller
       return $this->render('default/upload.html.twig', array(
         'form' => $form->createView()
       ));
+    }
+
+    /**
+     * @Route("/create", name="createTag")
+     */
+    public function createTag(Request $request)
+    {
+      // create a task and give it some dummy data for this example
+        $tag = new Tag();
+        
+        $form = $this->createFormBuilder($tag)
+            ->add('name')
+            ->add('save', 'submit')
+            ->getForm();
+        $form->handleRequest($request);    
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $tag = $form->getData();
+            $em->persist($tag);
+            $em->flush();
+
+            /*return $this->redirectToRoute('moderation', array(
+                'author' => $author
+            ), 302);*/
+        }
+
+        return $this->render('default/newTag.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
 }

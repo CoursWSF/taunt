@@ -31,11 +31,6 @@ class Tag
     private $name;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Sound", inversedBy="tags")
-    **/
-    private $sound;
-
-    /**
      * Get id
      *
      * @return integer
@@ -67,29 +62,5 @@ class Tag
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set sound
-     *
-     * @param integer $sound
-     *
-     * @return Tag
-     */
-    public function setSound($sound)
-    {
-        $this->sound = $sound;
-
-        return $this;
-    }
-
-    /**
-     * Get sound
-     *
-     * @return integer
-     */
-    public function getSound()
-    {
-        return $this->sound;
     }
 }
