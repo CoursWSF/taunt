@@ -4,24 +4,17 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-
-/**
- * @ORM\Entity
-=======
 
 /**
  * Sound
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Entity\SoundRepository")
->>>>>>> 966d71a0a18f468570db9bfde75b1bb76133abed
  */
 class Sound
 {
     /**
-<<<<<<< HEAD
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -43,46 +36,13 @@ class Sound
      * @Assert\File(maxSize="6000000")
      */
     private $file;
-=======
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="movie", type="string", length=255)
-     * @Assert\NotBlank()
-     */
-    private $movie;
-
-    /**
-     * @var string
-     *
-     * @Assert\NotBlank()
-     * @ORM\Column(name="content", type="text")
-     */
-    private $content;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="soundUrl", type="string", length=255)
-     * @Assert\NotBlank()
-     */
-    private $soundUrl;
->>>>>>> 966d71a0a18f468570db9bfde75b1bb76133abed
 
     /**
     * @ORM\OneToMany(targetEntity="Tag", mappedBy="sound")
     **/
     private $tags;
 
-<<<<<<< HEAD
     /**
      * Sets file.
      *
@@ -164,99 +124,4 @@ class Sound
       // clean up the file property as you won't need it anymore
       $this->file = null;
     }
-=======
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set movie
-     *
-     * @param string $movie
-     *
-     * @return Sound
-     */
-    public function setMovie($movie)
-    {
-        $this->movie = $movie;
-
-        return $this;
-    }
-
-    /**
-     * Get movie
-     *
-     * @return string
-     */
-    public function getMovie()
-    {
-        return $this->movie;
-    }
-
-    /**
-     * Set content
-     *
-     * @param string $content
-     *
-     * @return Sound
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
-     * @return string
-     */
-    public function getContent()
-    {
-        return $this->content;
-    }
-
-    /**
-     * Set soundUrl
-     *
-     * @param string $soundUrl
-     *
-     * @return Sound
-     */
-    public function setSoundUrl($soundUrl)
-    {
-        $this->soundUrl = $soundUrl;
-
-        return $this;
-    }
-
-    /**
-     * Get soundUrl
-     *
-     * @return string
-     */
-    public function getSoundUrl()
-    {
-        return $this->soundUrl;
-    }
-
-    /**
-     * Get tags
-     *
-     * @return integer
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
->>>>>>> 966d71a0a18f468570db9bfde75b1bb76133abed
 }

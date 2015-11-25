@@ -16,7 +16,6 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-<<<<<<< HEAD
         $sounds = $this->getDoctrine()->getRepository("AppBundle:Sound")->findAll();
 
         return $this->render('default/index.html.twig', array(
@@ -69,10 +68,4 @@ class DefaultController extends Controller
     {
       return $this->render('default/_navbar.html.twig');
     }
-=======
-        return $this->render('default/index.html.twig');
-    }
-
->>>>>>> 966d71a0a18f468570db9bfde75b1bb76133abed
-
 }
