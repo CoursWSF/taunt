@@ -25,14 +25,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/login", name="loginAdministration")
-     */
-    public function loginAction(Request $request)
-    {
-        return $this->render('default/login.html.twig');
-    }
-
-    /**
      * @Route("/upload", name="uploadMp3")
      */
     public function uploadAction(Request $request)
