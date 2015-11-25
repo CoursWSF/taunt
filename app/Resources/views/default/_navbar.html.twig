@@ -32,7 +32,7 @@
                         <ul class="nav navbar-nav navbar-right">
                           {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                           <li><a href="/upload"><i class="fa fa-pencil-square-o fa-1x"></i> Poster un taunt</a></li>
-                          <li><a href="/logout">Deconnection</a></li>
+                          <li><a href="/logout">Deconnexion</a></li>
 
                           {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
                           <li><a href="/login">Connexion</a></li>
