@@ -35,9 +35,11 @@
     function prepareUpload(event) {
       var files = event.target.files;
       var fileName = files[0].name;
-      console.log(fileName);
+      fileName = fileName.slice(13,fileName.length - 4);
+      var dialogue = fileName.replace("'", " ");
+      console.log(dialogue);
 
-      document.getElementsByClassName('dialogue')[0].value = fileName;
+      document.getElementsByClassName('dialogue')[0].value = dialogue;
     }
 
   </script>

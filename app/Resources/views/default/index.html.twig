@@ -7,9 +7,10 @@ function play(id){
      audio.play();
   }
 
-function display(name) {
+function display(name, dialogue) {
   console.log(name);
-  document.getElementById('informations').innerHTML = '<div class="focus"><h1>'+ name +'</h1> </div>';
+  // console.log(dialogue);
+  document.getElementById('informations').innerHTML = '<div class="focus"><h1>'+ name +'</h1><br><p>'+ dialogue +'</p></div>';
   // document.write('<div class="focus"><h1>'+ name +'</h1> </div>');
 }
  </script>
@@ -19,7 +20,7 @@ function display(name) {
  </div>
 
   {% for sound in sounds %}
-      <input type="button" value="{{sound.name}}"  onclick="play('{{sound.id}}'); display('{{sound.name}}')">
+      <input type="button" value="{{sound.name}}"  onclick="play('{{sound.id}}'); display('{{sound.name}}','{{sound.dialogue}}')">
       <audio id="{{'audio' ~ sound.id}}" src="uploads/sounds/{{sound.path}}" ></audio>
   {% endfor %}
 
