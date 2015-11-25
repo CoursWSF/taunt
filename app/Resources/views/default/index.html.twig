@@ -9,8 +9,25 @@ function play(id){
 
 function display(name, dialogue) {
   document.getElementById('informations').innerHTML = '<div class="focus"><h1>'+ name +'</h1><br><p>'+ dialogue +'</p></div>';
+  window.history.pushState(name, name, '/'+name);
 }
  </script>
+
+{% if soundByName != null %}
+
+  <div id="informations">
+    <div class="focus">
+      <h1>{{soundByName[0].name}}</h1>
+      <br>
+      <p>{{soundByName[0].dialogue}}</p>
+      <audio autoplay="autoplay">
+        <source src="{{soundByName[0].path}}" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
+{% endif %}
+
 
  <div id="informations">
 
