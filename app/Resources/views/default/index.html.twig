@@ -1,46 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="bs-component">
-                  <nav class="navbar navbar-inverse">
-                    <div class="container-fluid">
-                      <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-                          <span class="sr-only">Toggle navigation</span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/">Taunt</a>
-                      </div>
+<script>
+function play(id){
+     var audio = document.getElementById('audio'+ id );
+     audio.play();
+  }
 
-                      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-                        <ul class="nav navbar-nav">
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catégories <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                              <li><a href="/categorie/Humour">Humour</a></li>
-                              <li><a href="/categorie/Animaux">Animaux</a></li>
-                              <li><a href="/categorie/Argent">Argent</a></li>
-                              <li><a href="/categorie/Enfants">Enfants</a></li>
-                              <li><a href="/categorie/Travail">Travail</a></li>
-                              <li><a href="/categorie/Santé">Santé</a></li>
-                              <li class="divider"></li>
-                              <li><a href="/categorie/Inclassable">Inclassable</a></li>
-                            </ul>
+function display(name, dialogue) {
+  console.log(name);
+  // console.log(dialogue);
+  document.getElementById('informations').innerHTML = '<div class="focus"><h1>'+ name +'</h1><br><p>'+ dialogue +'</p></div>';
+  // document.write('<div class="focus"><h1>'+ name +'</h1> </div>');
+}
+ </script>
 
-                          </li>
-                        </ul>
+ <div id="informations">
 
-                        <ul class="nav navbar-nav navbar-right">
-                          <li><a href="/upload"><i class="fa fa-pencil-square-o fa-1x"></i> Poster un taunt</a></li>
-                          <li><a href="/login">Connexion</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </nav>
-                </div>
-{% endblock %}
+ </div>
 
-{% block stylesheets %}
+  {% for sound in sounds %}
+      <input type="button" value="{{sound.name}}"  onclick="play('{{sound.id}}'); display('{{sound.name}}','{{sound.dialogue}}')">
+      <audio id="{{'audio' ~ sound.id}}" src="uploads/sounds/{{sound.path}}" ></audio>
+  {% endfor %}
+
+
+
 {% endblock %}

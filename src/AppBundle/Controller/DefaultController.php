@@ -16,9 +16,11 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+        $sounds = $this->getDoctrine()->getRepository("AppBundle:Sound")->findAll();
+
         return $this->render('default/index.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+            'sounds' => $sounds
         ));
     }
 
@@ -40,6 +42,7 @@ class DefaultController extends Controller
       $form = $this->createFormBuilder($sound)
           ->add('name')
           ->add('file')
+          ->add('dialogue')
           ->add('submit', 'submit')
           ->getForm();
 
@@ -60,6 +63,11 @@ class DefaultController extends Controller
       return $this->render('default/upload.html.twig', array(
         'form' => $form->createView()
       ));
+    }
+
+    public function showNavBarAction(Request $request)
+    {
+      return $this->render('default/_navbar.html.twig');
     }
 
 }
