@@ -6,8 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
+
 /**
- * @ORM\Entity
+ * Sound
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\SoundRepository")
  */
 class Sound
 {
@@ -39,6 +43,7 @@ class Sound
      * @Assert\File(maxSize="6000000")
      */
     private $file;
+
 
     /**
     * @ORM\OneToMany(targetEntity="Tag", mappedBy="sound")
