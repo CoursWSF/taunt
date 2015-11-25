@@ -3,9 +3,9 @@
 {% block body %}
 
   {# S'il y a une erreur, on l'affiche dans un joli cadre #}
-  {% if error %}
-    <div class="alert alert-danger">{{ error.message }}</div>
-  {% endif %}
+{% if error %}
+    <div class="alert alert-danger text-center" stlye="border-radius:10px;">Login ou mot de passe incorrect</div>
+{% endif %}
 
   {# Le formulaire, avec URL de soumission vers la route « login_check » comme on l'a vu #}
   <form action="{{ path('login_check') }}" method="post">
