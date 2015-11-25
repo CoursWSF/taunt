@@ -42,6 +42,7 @@ class DefaultController extends Controller
       $form = $this->createFormBuilder($sound)
           ->add('name')
           ->add('file')
+          ->add('dialogue')
           ->add('submit', 'submit')
           ->getForm();
 

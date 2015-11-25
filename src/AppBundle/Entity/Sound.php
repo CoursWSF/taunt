@@ -13,21 +13,27 @@ class Sound
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     public $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank
      */
     public $name;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(name="path", type="string", length=255, nullable=true)
      */
     public $path;
+
+    /**
+     * @ORM\Column(name="dialogue", type="text")
+     * @Assert\NotBlank
+     */
+    public $dialogue;
 
     /**
      * @Assert\File(maxSize="6000000")
