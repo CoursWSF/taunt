@@ -14,7 +14,10 @@
             {{form_row(form.name, {'attr': {class:"form-control"}})}}
           </div>
           <div class="form-group">
-            {{form_row(form.file, {'attr': {class:"form-control"}})}}
+            {{form_row(form.file, {'attr': {class:"form-control file"}})}}
+          </div>
+          <div class="form-group">
+            {{form_row(form.dialogue, {'attr': {class:"form-control dialogue"}})}}
           </div>
 
           {{form_rest(form)}}
@@ -24,5 +27,22 @@
       <div class="col-sm-4"></div>
     </div>
   </div>
+
+  <script>
+
+    document.getElementsByClassName('file')[0].addEventListener('change',prepareUpload,false);
+
+    function prepareUpload(event) {
+      var files = event.target.files;
+      var fileName = files[0].name;
+      fileName = fileName.slice(13,fileName.length - 4);
+      var dialogue = fileName.replace("'", " ");
+      console.log(dialogue);
+
+      document.getElementsByClassName('dialogue')[0].value = dialogue;
+    }
+
+  </script>
+
 
 {% endblock %}
