@@ -11,4 +11,12 @@ class SoundRepository extends \Doctrine\ORM\EntityRepository
       ->getQuery()
       ->getResult();
   }
+
+  public function selectByName($name) {
+    return $this->createQueryBuilder('S')
+      ->where("S.name LIKE :name OR S.dialogue LIKE :name")
+      ->setParameter("name", '%'.$name.'%')
+      ->getQuery()
+      ->getResult();
+  }
 }
