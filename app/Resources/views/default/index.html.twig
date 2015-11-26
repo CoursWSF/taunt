@@ -8,7 +8,7 @@ function play(id){
   }
 
 function display(name, dialogue) {
-  document.getElementById('informations').innerHTML = '<div class="focus"><h1>'+ name +'</h1><br><p>'+ dialogue +'</p></div>';
+  document.getElementById('informations').innerHTML = '<div class="focus"><h1>'+ name +'</h1><br><p>'+ dialogue +'</p> <a style="color:white;" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//localhost%3A8000/'+name+'"><i class="fa fa-facebook"> </i></a> <a style="color:white;" href="https://twitter.com/home?status='+ name +'%20http%3A//localhost%3A8000/'+ name +'%20via%20%40taunt%20"><i class="fa fa-twitter"> </i> </a></div>';
   window.history.pushState(name, name, '/'+name);
 }
  </script>
@@ -20,7 +20,7 @@ function display(name, dialogue) {
       <h1>{{soundByName[0].name}}</h1>
       <br>
       <p>{{soundByName[0].dialogue}}</p>
-      <audio autoplay="autoplay">
+      <audio autoplay="autoplays">
         <source src="{{soundByName[0].path}}" type="audio/mpeg">
       </audio>
     </div>
