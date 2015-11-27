@@ -11,13 +11,16 @@ function play(id){
 
 function display(name, dialogue) {
 
-  document.getElementById('informations').innerHTML = '<div class="focus"><h1>'+ name +'</h1><br><p>'+ dialogue +'</p> <i style="color:white; cursor:pointer;" class="fa fa-facebook" '+onclick="facebookSharing(name)"+'> </i> <i style="color:white; cursor:pointer;" class="fa fa-twitter"> </i></div>';
+  document.getElementById('informations').innerHTML = '<div class="focus"><h1>'+ name +'</h1><br><p>'+
+  dialogue +'</p> <i style="color:white; cursor:pointer;"'+
+  'class="fa fa-facebook" onclick="facebookSharing()"> </i>'+
+  '<i style="color:white; cursor:pointer;"'+
+  'class="fa fa-twitter" onclick="twitterSharing()"> </i></div>';
   window.history.pushState(name, name, '/'+name);
 
 }
 
-function facebookSharing(name, event) {
-
+function facebookSharing(name) {
   var url = "http://localhost:8000/"+name;
   window.open( "http://www.facebook.com/sharer.php?u=" +
     encodeURIComponent(url) + "&t=" +
@@ -25,12 +28,10 @@ function facebookSharing(name, event) {
     "facebook", "height=300,width=550,resizable=1" );
 }
 
-function twitterSharing(e, name) {
-
+function twitterSharing(name) {
   var url = "http://localhost:8000/"+name;
   window.open( "http://twitter.com/share?url=" +
-   encodeURIComponent(url) + "&text=" +
-   encodeURIComponent(name+ " via") + "&count=none/",
+   encodeURIComponent(url) + "&text=",
    "tweet", "height=300,width=550,resizable=1" )
 }
 
