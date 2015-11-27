@@ -21,7 +21,7 @@ function display(name, dialogue) {
       <br>
       <p>{{soundByName[0].dialogue}}</p>
       <audio autoplay="autoplays">
-        <source src="{{soundByName[0].path}}" type="audio/mpeg">
+        <source src="/{{soundByName[0].path}}" type="audio/mpeg">
       </audio>
     </div>
   </div>
@@ -35,7 +35,7 @@ function display(name, dialogue) {
 
   {% for sound in sounds %}
       <input type="button" value="{{sound.name}}"  onclick="play('{{sound.id}}'); display('{{sound.name}}','{{sound.dialogue}}')">
-      <audio id="{{'audio' ~ sound.id}}" src="uploads/sounds/{{sound.path}}" ></audio>
+      <audio id="{{'audio' ~ sound.id}}" src="/uploads/sounds/{{sound.path}}" ></audio>
   {% endfor %}
 
 
