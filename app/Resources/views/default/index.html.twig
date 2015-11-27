@@ -11,8 +11,25 @@ function display(name, dialogue) {
   document.getElementById('informations').innerHTML = '<div class="focus"><h1>'+ name +'</h1><br><p>'+ dialogue +'</p> <a style="color:white;" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//localhost%3A8000/'+name+'"><i class="fa fa-facebook"> </i></a> <a style="color:white;" href="https://twitter.com/home?status='+ name +'%20http%3A//localhost%3A8000/'+ name +'%20via%20%40taunt%20"><i class="fa fa-twitter"> </i> </a></div>';
   window.history.pushState(name, name, '/'+name);
 }
+</script>
 
- </script>
+<script>
+var url = window.location.href;
+var clipboard = new Clipboard('.btn', {
+    text: function() {
+        return window.location.href;
+    }
+
+});
+
+clipboard.on('success', function(e) {
+    console.log(e);
+});
+
+clipboard.on('error', function(e) {
+    console.log(e);
+});
+</script>
 
 {% if soundByName != null %}
 
@@ -31,7 +48,13 @@ function display(name, dialogue) {
 
 <center><div class="focus"><i class="fa fa-facebook"><a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'facebook-share-dialog','width=626,height=436');return false;"> Share on Facebook</div></a></i></center>
 <center><div class="focus"><i class="fa fa-twitter"><a href="#" onclick="window.open('http://twitter.com/share?url='+encodeURIComponent(location.href),'twitter-share-dialog','width=626,height=436');return false;">Share on Twitter</div></a></i></center>
-  </li>
+<center><div class="focus"><i class="fa fa-link btn">Copier</i></div></center>
+
+    <!-- 2. Include library -->
+
+
+    <!-- 3. Instantiate clipboard -->
+
  <div id="informations">
 
  </div>
