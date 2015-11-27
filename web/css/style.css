@@ -9,6 +9,10 @@ input[type="button"]:focus {
   border-bottom: blue solid 1px;
 }
 
+form.loginform {
+  margin: 10px;
+}
+
 .focus {
   width: 100%;
   height: 100%;
@@ -17,3 +21,4 @@ input[type="button"]:focus {
   text-align: center;
   padding: 1% 0 0 0;
 }
+

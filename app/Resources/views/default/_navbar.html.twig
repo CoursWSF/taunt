@@ -29,9 +29,9 @@
                           </li>
                         </ul>
 
+                          <input type="text" id="search" name="search" value="" placeholder="Search"> <a href="#" id="searchUrl" onclick="searchUrl()"><i class="fa fa-search"></i></a>
                         <ul class="nav navbar-nav navbar-right">
                           {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                          <li><input type="text" id="search" name="search" value="" placeholder="Search"> <a href="#" id="searchUrl" onclick="searchUrl()"><i class="fa fa-search"></i></a></li>
                           <li><a href="/upload"><i class="fa fa-pencil-square-o fa-1x"></i> Poster un taunt</a></li>
                           <li><a href="/logout">Deconnexion</a></li>
 
