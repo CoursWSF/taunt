@@ -20,7 +20,8 @@ class DefaultController extends Controller
 
         return $this->render('default/index.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-            'sounds' => $sounds
+            'sounds' => $sounds,
+            'soundByName' => null
         ));
     }
 
@@ -57,9 +58,38 @@ class DefaultController extends Controller
       ));
     }
 
+    /**
+     * @Route("/{name}", name="findByName")
+     */
+    public function findByNameAction(Request $request, $name)
+    {
+      $soundByName = $this->getDoctrine()->getRepository("AppBundle:Sound")->findByName($name);
+      $sounds = $this->getDoctrine()->getRepository("AppBundle:Sound")->findAll();
+
+      \dump($soundByName);
+
+      return $this->render('default/index.html.twig', array(
+        'sounds' => $sounds,
+        'soundByName' => $soundByName
+      ));
+    }
+
     public function showNavBarAction(Request $request)
     {
       return $this->render('default/_navbar.html.twig');
     }
 
+    /**
+     * @Route("/search/{name}", name="searchByName")
+     */
+    public function searchByNameAction(Request $request, $name)
+    {
+      $soundByName = null;
+      $sounds = $this->getDoctrine()->getRepository("AppBundle:Sound")->selectByName($name);
+
+      return $this->render('default/index.html.twig', array(
+        'sounds' => $sounds,
+        'soundByName' => $soundByName
+      ));
+    }
 }
