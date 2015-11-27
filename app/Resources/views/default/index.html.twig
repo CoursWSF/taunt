@@ -17,7 +17,7 @@ function display(name, dialogue) {
   '<i style="color:white; cursor:pointer;"'+
   'class="fa fa-twitter" onclick="twitterSharing()"> </i>'+
   '<i class="fa fa-link btn">Copier</i></div>';
-  window.history.pushState(name, name, '/'+name);
+  window.history.pushState(name, name, '/name/'+name);
 
 }
 
@@ -66,7 +66,7 @@ clipboard.on('error', function(e) {
       <audio autoplay>
         <source src="/uploads/sounds/{{soundByName[0].path}}" type="audio/mpeg">
       </audio>
-      
+
       <i style="color:white; cursor:pointer;" class="fa fa-facebook" onclick="facebookSharing('{{soundByName[0].name}}')"> </i>
       <i style="color:white; cursor:pointer;" class="fa fa-twitter" onclick="twitterSharing('{{soundByName[0].name}}')"> </i>
       <div class="focus"><i class="fa fa-link btn">Copier</i></div>
