@@ -58,21 +58,21 @@ class DefaultController extends Controller
       ));
     }
 
-    /**
-     * @Route("/{name}", name="findByName")
-     */
-    public function findByNameAction(Request $request, $name)
-    {
-      $soundByName = $this->getDoctrine()->getRepository("AppBundle:Sound")->findByName($name);
-      $sounds = $this->getDoctrine()->getRepository("AppBundle:Sound")->findAll();
+    // /**
+    //  * @Route("/{name}", name="findByName")
+    //  */
+    // public function findByNameAction(Request $request, $name)
+    // {
+    //   $soundByName = $this->getDoctrine()->getRepository("AppBundle:Sound")->findByName($name);
+    //   $sounds = $this->getDoctrine()->getRepository("AppBundle:Sound")->findAll();
 
-      \dump($soundByName);
+    //   \dump($soundByName);
 
-      return $this->render('default/index.html.twig', array(
-        'sounds' => $sounds,
-        'soundByName' => $soundByName
-      ));
-    }
+    //   return $this->render('default/index.html.twig', array(
+    //     'sounds' => $sounds,
+    //     'soundByName' => $soundByName
+    //   ));
+    // }
 
     public function showNavBarAction(Request $request)
     {
