@@ -77,17 +77,4 @@ class DefaultController extends Controller
       return $this->render('default/_navbar.html.twig');
     }
 
-    /**
-     * @Route("/search/{name}", name="searchByName")
-     */
-    public function searchByNameAction(Request $request, $name)
-    {
-      $soundByName = null;
-      $sounds = $this->getDoctrine()->getRepository("AppBundle:Sound")->selectByName($name);
-
-      return $this->render('default/index.html.twig', array(
-        'sounds' => $sounds,
-        'soundByName' => $soundByName
-      ));
-    }
 }
