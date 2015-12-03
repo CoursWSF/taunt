@@ -51,7 +51,7 @@ var clipboard = new Clipboard('.btn', {
     <div class="col-sm-8">
       <div class="row">
         <div class="col-sm-3" ng-repeat="s in {{sounds | json_encode}} | filter:searchText">
-          <p class="nameSound" ng-click="click(s)"> {[{s.name}]} </p>
+          <p class="nameSound" ng-click="click(s)" ng-style="{color:getRandomColor()}"> {[{s.name}]} </p>
         </div>
       </div>
 
