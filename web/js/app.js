@@ -7,7 +7,7 @@ myApp.config(function($interpolateProvider){
 
 myApp.controller('myAppController', ['$scope',  '$rootScope', function($scope, $rootScope) {
 
-  $scope.details = false;
+  $scope.soundDetails = false;
 
   $scope.click = function(sound) {
     $scope.soundDetails = true;

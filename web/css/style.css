@@ -1,16 +1,18 @@
-input[type="button"]
+.nameSound
 {
-    background: transparent;
-    border: none;
-    outline:none;
-}
-
-input[type="button"]:focus {
-  border-bottom: blue solid 1px;
-}
-
-form.loginform {
+  background: transparent;
+  border: none;
+  outline: none;
+  display: inline-block;
+  margin: auto;
+  width: 200px;
+  font-size: 20px;
   margin: 10px;
+  cursor: pointer;
+}
+
+.nameSound:focus {
+  border-bottom: blue solid 1px;
 }
 
 .focus {
@@ -22,15 +24,85 @@ form.loginform {
   padding: 1% 0 0 0;
 }
 
-
-a {
-    color: white!important;
+a, a.active, a:hover {
+  text-decoration: none;
 }
 
+/*** NAVBAR ***/
+
+h1.title {
+  text-align: center;
+  color: #8a7df4;
+}
 .navbar {
-    margin-bottom: 0px!important;
-  }
+  color: black !important;
+  margin-bottom: 0px!important;
+  background-color: white !important;
+}
+
+ul.navbar-right > li > a {
+  color: black !important;
+}
 
 .navbar-inverse {
-        border-color: transparent;
-    }
+  border-color: transparent;
+}
+
+.navbar-brand {
+  color: black !important;
+
+}
+
+/* Search */
+div.navbar-header {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 100% !important;
+}
+div.searchbar > input {
+  border-bottom: 1px solid #8a7df4;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  width: 250px;
+}
+
+div.searchbar {
+    width: 267px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Menu */
+ul.navbar-right {
+  height: 0;
+  color: #ccc !important;
+}
+
+ul.navbar-right > li > a {
+  margin-top: 20px;
+  color: #999999 !important;
+}
+ul.navbar-right > li > a > i {
+  color: #ccc !important;
+}
+ul.navbar-right > li > a:hover, ul.navbar-right > li > a:active, ul.navbar-right > li > a:focus {
+  background-color: white !important;
+}
+
+input:focus {
+  outline-width: 0;
+  outline: none;
+}
+
+/*Focus*/
+i.fa-twitter {
+  margin-left: 20px;
+  }
+}
+/*** LOGIN ***/
+form.loginform {
+
+}

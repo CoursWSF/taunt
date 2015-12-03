@@ -1,62 +1,43 @@
+<h1 class="title"><a class="taunt" href="/">Taunt</a></h1>
 <div class="bs-component">
-                  <nav class="navbar navbar-inverse">
-                    <div class="container-fluid">
-                      <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-                          <span class="sr-only">Toggle navigation</span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/">Taunt</a>
-                      </div>
 
-                      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-                        <ul class="nav navbar-nav">
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catégories <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                              <li><a href="/categorie/Humour">Humour</a></li>
-                              <li><a href="/categorie/Animaux">Animaux</a></li>
-                              <li><a href="/categorie/Argent">Argent</a></li>
-                              <li><a href="/categorie/Enfants">Enfants</a></li>
-                              <li><a href="/categorie/Travail">Travail</a></li>
-                              <li><a href="/categorie/Santé">Santé</a></li>
-                              <li class="divider"></li>
-                              <li><a href="/categorie/Inclassable">Inclassable</a></li>
-                            </ul>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
 
-                          </li>
-                        </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <li><a href="/upload"><i class="fa fa-plus"></i></i> Nouveau taunt</a></li>
+        <li><a href="/logout"><i class="fa fa-sign-out"></i></a></li>
 
-                          <input type="text" id="search" name="search" value="" placeholder="Search" ng-model="searchText"> <a href="#" id="searchUrl" onclick="searchUrl()"><i class="fa fa-search"></i></a>
-                        <ul class="nav navbar-nav navbar-right">
-                          {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                          <li><a href="/upload"><i class="fa fa-pencil-square-o fa-1x"></i> Poster un taunt</a></li>
-                          <li><a href="/logout">Deconnexion</a></li>
+        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+        <li><a href="/login"><i class="fa fa-sign-in"></i></a></li>
+        {% endif %}
+        </ul>
 
-                          {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
-                          <li><a href="/login">Connexion</a></li>
-                          {% endif %}
+      <div class="navbar-header">
+        <div class="searchbar">
+          <input type="text" id="search" name="search" value="" placeholder="Rechercher un taunt" ng-model="searchText">
+            <a href="#" id="searchUrl" onclick="searchUrl()"><i class="fa fa-search"></i></a>
+        </div>
+      </div>
 
-                        </ul>
-                      </div>
-                    </div>
-                  </nav>
-                </div>
+      </div>
+    </div>
+  </nav>
+</div>
 
-                <script>
-                  document.getElementById('search').addEventListener('change',prepareUrl,false);
+<script>
+  document.getElementById('search').addEventListener('change',prepareUrl,false);
 
-                  var searchValue = "";
+  var searchValue = "";
 
-                  function prepareUrl(event) {
-                    searchValue = this.value;
-                    return searchValue;
-                  }
+  function prepareUrl(event) {
+    searchValue = this.value;
+    return searchValue;
+  }
 
-                  function searchUrl() {
-                    document.getElementById("searchUrl").href="/search/" + searchValue;
-                  }
+  function searchUrl() {
+    document.getElementById("searchUrl").href="/search/" + searchValue;
+  }
 
-                </script>
+</script>
