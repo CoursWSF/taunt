@@ -1,13 +1,26 @@
+<!-- BOOTSTRAP -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cosmo/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!-- CSS  -->
+  <link rel="stylesheet" href="{{ asset("css/style.css") }}">
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC:700' rel='stylesheet' type='text/css'>
+
+<!-- FONTAWESOME -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
 {% block body %}
+
+
 <h1 class="title"><a class="taunt" href="/">Taunt</a></h1>
 
   {# S'il y a une erreur, on l'affiche dans un joli cadre #}
 {% if error %}
     <div class="alert alert-danger text-center" stlye="border-radius:10px;">Login ou mot de passe incorrect</div>
 {% endif %}
-
+  <div class="col-sm-5"></div>
   {# Le formulaire, avec URL de soumission vers la route « login_check » comme on l'a vu #}
-  <form action="{{ path('login_check') }}" method="post" class="loginform">
+  <form class="col-sm-3" action="{{ path('login_check') }}" method="post" class="loginform">
     <label for="username">Login :</label>
     <input type="text" id="username" name="_username" value="{{ last_username }}" />
 
@@ -16,5 +29,7 @@
     <br />
     <input type="submit" value="Connexion" />
   </form>
+
+  <div class="col-sm-4"></div>
 
 {% endblock %}
