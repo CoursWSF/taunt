@@ -3,39 +3,6 @@
 {% block body %}
 <script>
 
-
-function play(id){
-     var audio = document.getElementById('audio'+ id );
-     audio.play();
-  }
-
-function display(name, dialogue) {
-
-  document.getElementById('informations').innerHTML = '<div class="focus"><h1>'+ name +'</h1><br><p>'+
-  dialogue +'</p> <i style="color:white; cursor:pointer;"'+
-  'class="fa fa-facebook" onclick="facebookSharing()"> </i>'+
-  '<i style="color:white; cursor:pointer;"'+
-  'class="fa fa-twitter" onclick="twitterSharing()"> </i>'+
-  '<i class="fa fa-link btn">Copier</i></div>';
-  window.history.pushState(name, name, '/name/'+name);
-
-}
-
-function facebookSharing() {
-  var url = "http://localhost:8000/"+name;
-  window.open( "http://www.facebook.com/sharer.php?u=" +
-    encodeURIComponent(url) + "&t=" +
-    encodeURIComponent(name),
-    "facebook", "height=300,width=550,resizable=1" );
-}
-
-function twitterSharing() {
-  var url = "http://localhost:8000/"+name;
-  window.open( "http://twitter.com/share?url=" +
-   encodeURIComponent(url) + "&text=",
-   "tweet", "height=300,width=550,resizable=1" )
-}
-
 var url = window.location.href;
 var clipboard = new Clipboard('.btn', {
     text: function() {
@@ -44,16 +11,7 @@ var clipboard = new Clipboard('.btn', {
 
 });
 
-clipboard.on('success', function(e) {
-    console.log(e);
-});
-
-clipboard.on('error', function(e) {
-    console.log(e);
-});
-
-
- </script>
+</script>
 
 {% if soundByName != null %}
 
@@ -67,24 +25,28 @@ clipboard.on('error', function(e) {
         <source src="/uploads/sounds/{{soundByName[0].path}}" type="audio/mpeg">
       </audio>
 
-      <i style="color:white; cursor:pointer;" class="fa fa-facebook" onclick="facebookSharing('{{soundByName[0].name}}')"> </i>
-      <i style="color:white; cursor:pointer;" class="fa fa-twitter" onclick="twitterSharing('{{soundByName[0].name}}')"> </i>
-      <div class="focus"><i class="fa fa-link btn">Copier</i></div>
+      <i style="color:white; cursor:pointer;" class="fa fa-facebook" ng-click="facebookSharing('{{soundByName[0].name}}')"> </i>
+      <i style="color:white; cursor:pointer;" class="fa fa-twitter" ng-click="twitterSharing('{{soundByName[0].name}}')"> </i>
+      <div class="focus"><i class="fa fa-link btn"> Copier</i></div>
     </div>
   </div>
 
 {% endif %}
 
+ <div ng-if="soundDetails === true;" id="informations">
+   <div class="focus">
+     <h1>{[{soundName}]}</h1><br>
+     <p>{[{soundDialogue}]}</p>
 
- <div id="informations">
-
+     <i style="color:white; cursor:pointer;" class="fa fa-facebook" ng-click="facebookSharing(soundName)"> </i>
+     <i style="color:white; cursor:pointer;" class="fa fa-twitter" ng-click="twitterSharing(soundName)"> </i>
+     <i class="fa fa-link btn">Copier</i></div>
+   </div>
  </div>
 
-  {% for sound in sounds %}
-      <input type="button" value="{{sound.name}}"  onclick="play('{{sound.id}}'); display('{{sound.name}}','{{sound.dialogue}}')">
-      <audio id="{{'audio' ~ sound.id}}" src="/uploads/sounds/{{sound.path}}" ></audio>
-  {% endfor %}
-
+  <div ng-repeat="s in {{sounds | json_encode}} | filter:searchText">
+    <p ng-click="click(s)"> {[{s.name}]} </p>
+  </div>
 
 
 {% endblock %}
